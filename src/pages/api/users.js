@@ -1,10 +1,7 @@
-import { randomUsers } from "@/utils/dummyUsers";
+export default async function handler(request, response) {
+  const data = await fetch("https://dev.to/api/articles/1747862");
+  const blog = await data.json();
+  response.setHeader("Access-Control-Allow-Origin", "*");
 
-// import { randomUsers } from "../../utils/dummyUsers";
-
-const handler = (req, res) => {
-  res.status(200).json(randomUsers);
-  res.setHeader("Access-Control-Allo-Orign", "*");
-};
-
-export default handler;
+  response.status(200).json(blog);
+}
